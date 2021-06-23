@@ -1,0 +1,16 @@
+td,
+th {
+  padding: 5px;
+  border: 1px solid #fff;
+}
+
+th {
+  background: #000;
+  color: green;
+
+}
+
+td {
+  background-color: silver;
+  color: red;
+}
