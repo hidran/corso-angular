@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { User } from '../interfaces/user';
 
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'tr[app-user]',
@@ -9,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class UserComponent implements OnInit {
 
-  @Input('user-data') user: any;
+  @Input('user-data') user: User | undefined;
   @Output('onDeleteUser') userDeleted = new EventEmitter();
   constructor(private userService: UserService) { }
 

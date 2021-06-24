@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { User } from '../interfaces/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-users',
@@ -13,16 +14,17 @@ import { UserService } from '../user.service';
 
 export class UsersComponent implements OnInit {
   title = 'Users'
-  public users: any[] = [];
+  public users: User[] = [];
 
   constructor(private service: UserService) {
 
 
   }
   ngOnInit(): void {
+
     this.users = this.service.getUsers();
   }
-  onDeleteUser(user: any) {
+  onDeleteUser(user: User) {
     this.service.deleteUser(user);
   }
 }
