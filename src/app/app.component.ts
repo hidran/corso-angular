@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {User} from "./interfaces/user";
+import { User } from "./interfaces/user";
 
 @Component({
   selector: 'app-root',
@@ -9,8 +9,19 @@ import {User} from "./interfaces/user";
 export class AppComponent {
   title = 'Hello';
   name = 'Hidran';
-  userSelected: User | undefined;
-  updateUser(user: User){
+  userSelected: User = {
+    name: '',
+    lastname: '',
+    email: '',
+    fiscalcode: '',
+    province: '',
+    phone: '',
+    age: 0,
+  }
+
+
+
+  updateUser(user: User) {
     this.userSelected = user;
   }
 }

@@ -15,15 +15,7 @@ export class UserComponent implements OnInit {
   @Output('onSelectUser') onSelectUser = new EventEmitter();
 
   constructor(private userService: UserService) {
-    this.user = {
-      name:'',
-      lastname:'',
-      email: '',
-      fiscalcode: '',
-      province : '',
-      phone: '',
-      age:50
-    }
+
   }
 
   ngOnInit() {
