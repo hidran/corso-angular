@@ -9,19 +9,22 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  @Input() user: User;
+  private usercopy: User;
+  private __user: User;
+
+  @Input() set user(user: User) {
+    this.__user = user;
+    this.usercopy = Object.assign({}, user);
+  }
+
+  get user() {
+    return this.__user;
+  }
 
   constructor(private userService: UserService) {
-    this.user = {
-      id: 0,
-      name: '',
-      lastname: '',
-      email: '',
-      fiscalcode: '',
-      province: '',
-      phone: '',
-      age: 0,
-    }
+    this.user = new User();
+    this.__user = new User();
+    this.usercopy = new User();
   }
 
   ngOnInit(): void {
@@ -42,7 +45,7 @@ export class UserDetailComponent implements OnInit {
     if (this.user.id === 0) {
       this.user = new User();
     } else {
-      form.reset();
+      this.user = this.usercopy;
     }
 
   }
