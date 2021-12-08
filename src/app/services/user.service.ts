@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../classes/User';
+import { UserInterface } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +58,13 @@ export class UserService {
     const index = this.users.indexOf(user);
     if (index > -1) {
       this.users.splice(index, 1);
+    }
+  }
+  updateUser(user: UserInterface) {
+    const idx = this.users.findIndex(v => v.id === user.id);
+
+    if (idx !== -1) {
+      this.users[idx] = { ...user };
     }
   }
 
