@@ -12,6 +12,7 @@
   </tr>
   <tr app-user
   *ngFor="let user of users" [user-data]="user"
+      (onSelectUser) ="onSelectUser($event)"
   (onDeleteUser) = "onDeleteUser($event)">
 
   </tr>
