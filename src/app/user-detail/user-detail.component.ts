@@ -1,6 +1,7 @@
 import { UserService } from './../services/user.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../classes/User';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user-detail',
@@ -26,9 +27,22 @@ export class UserDetailComponent implements OnInit {
   ngOnInit(): void {
   }
   saveUser() {
-    alert(this.user.id )
+
     if (this.user.id > 0) {
       this.userService.updateUser(this.user);
+    }
+    else {
+      this.userService.createUser(this.user);
+    }
+    // Let's unbind this.user from previously created/modified user
+    this.user = new User();
+  }
+  resetForm(form: FormGroup) {
+
+    if (this.user.id === 0) {
+      this.user = new User();
+    } else {
+      form.reset();
     }
 
   }
