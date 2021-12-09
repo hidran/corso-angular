@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { User } from '../classes/User';
 import { UserService } from '../services/user.service';
 
+
 @Component({
   selector: 'app-users',
 
@@ -16,6 +17,8 @@ export class UsersComponent implements OnInit {
   title = 'Users'
   public users: User[] = [];
   @Output('updateUser') updateUser = new EventEmitter<User>();
+
+
   constructor(private service: UserService) {
 
 
