@@ -1,26 +1,31 @@
 import { NgModule } from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UsersComponent } from './users/users.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserService } from './services/user.service';
 const routes: Routes = [
   {
     path: 'users',
     pathMatch: 'full',
-    component : UsersComponent
+    component: UsersComponent
+
   },
   {
-   path: '',
+    path: '',
     pathMatch: 'full',
-    redirectTo : 'users'
+    redirectTo: 'users'
   },
   {
-   path: 'users/new',
-    component : UserDetailComponent
+    path: 'users/new',
+    component: UserDetailComponent
+  },
+  {
+    path: 'users/:id/edit',
+    component: UserDetailComponent
   },
 ];
 
@@ -32,7 +37,7 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(routes),
-     FormsModule,
+    FormsModule,
     FontAwesomeModule,
     CommonModule
   ],
