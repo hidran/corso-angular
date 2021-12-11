@@ -1,7 +1,7 @@
-import { UserService } from './../services/user.service';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../classes/User';
+import { ActivatedRoute } from '@angular/router';
+import { UserInterface } from '../interfaces/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-data',
@@ -9,20 +9,22 @@ import { User } from '../classes/User';
   styleUrls: ['./user-data.component.css']
 })
 export class UserDataComponent implements OnInit {
-  user: User | undefined
+
+  user: UserInterface | undefined;
+
   constructor(private userService: UserService, private route: ActivatedRoute) {
-    this.user = new User();
+
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(param => {
-      const id = Number(param.id);
+      const id = Number(param.id); // '12'
       const user = this.userService.getUser(id);
       if (user) {
         this.user = user;
       }
-    });
 
+    });
   }
 
 }

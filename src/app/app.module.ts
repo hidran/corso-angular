@@ -15,9 +15,9 @@ import { UserDataComponent } from './user-data/user-data.component';
   imports: [
     BrowserModule,
     AppRoutingModule
-   
+
   ],
- 
+
   providers: [],
   bootstrap: [AppComponent]
 })

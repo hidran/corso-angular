@@ -22,15 +22,17 @@ const routes: Routes = [
   },
   {
     path: 'users/new',
-    component: UserDetailComponent
+    component: UserDataComponent
   },
   {
     path: 'users/:id/edit',
     component: UserDetailComponent
-  }, {
+  }
+  ,
+  {
     path: 'users/:id',
     component: UserDataComponent
-  },
+  }
 ];
 
 @NgModule({

@@ -8,9 +8,9 @@
 <td>
   <div class="row">
     <div class="col-sm">
-  <button class="btn btn-sm btn-primary" (click) = "updateUser()">
+  <a class="btn btn-sm btn-primary" [routerLink] ="['/users',user?.id ,'edit']">
     <fa-icon [icon]="faPen"></fa-icon>
-  </button>
+    </a>
     </div>
     <div class="col-sm">
   <button class="btn btn-sm btn-danger" (click)="deleteUser()"> <fa-icon [icon]="faTrash"></fa-icon></button>

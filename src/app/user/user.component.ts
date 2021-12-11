@@ -30,8 +30,9 @@ export class UserComponent implements OnInit {
 
   }
   updateUser() {
-    this.route.navigate(['users', this.user?.id, 'edit']);
-    this.onSelectUser.emit(this.user);
+    // this.route.navigateByUrl('/users/' + this.user?.id + '/edit');
+    //this.route.navigate(['users', this.user?.id, 'edit']);
+    //this.onSelectUser.emit(this.user);
 
   }
 }
