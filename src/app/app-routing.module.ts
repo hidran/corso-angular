@@ -1,3 +1,4 @@
+import { UserDataComponent } from './user-data/user-data.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -26,6 +27,9 @@ const routes: Routes = [
   {
     path: 'users/:id/edit',
     component: UserDetailComponent
+  }, {
+    path: 'users/:id',
+    component: UserDataComponent
   },
 ];
 

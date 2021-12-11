@@ -53,9 +53,9 @@ export class UserService {
 
     return this.users;
   }
-  getUser(id: number): User {
+  getUser(id: number): User | undefined {
 
-    return this.users[id];
+    return this.users.find(user => user.id === id);
   }
   deleteUser(user: User) {
 
