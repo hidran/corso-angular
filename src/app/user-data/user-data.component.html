@@ -1,1 +1,42 @@
-<p>{{user | json}}</p>
+<h2>User detail</h2>
+
+<table class="table table-dark table-striped" *ngIf="user">
+  <tbody>
+   <tr>
+     <th>Name</th>
+     <td>{{user.name}}</td>
+   </tr>
+   <tr>
+     <th>Last name</th>
+     <td>{{user.lastname}}</td>
+   </tr>
+   <tr>
+     <th>Fiscal code</th>
+     <td>{{user.fiscalcode}}</td>
+   </tr>
+   <tr>
+     <th>Email</th>
+     <td>{{user.email}}</td>
+   </tr>
+   <tr>
+     <th>Phone</th>
+     <td>{{user.phone}}</td>
+   </tr>
+   <tr>
+     <th>Age</th>
+     <td>{{user.age}}</td>
+   </tr>
+   <tr>
+     <th>Province</th>
+     <td>{{user.province}}</td>
+   </tr>
+  </tbody>
+  <tfoot>
+  <tr><td colspan="2" class="text-center">
+    <a class="btn btn-lg btn-primary" [routerLink] ="['/users']">BACK TO USERS</a>
+  </td> </tr>
+  </tfoot>
+</table>
+<div *ngIf="!user">
+  <h2>No user found</h2>
+</div>

@@ -2,7 +2,7 @@ import { UserService } from './../services/user.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../classes/User';
 import { FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -22,7 +22,11 @@ export class UserDetailComponent implements OnInit {
     return this.__user;
   }
 
-  constructor(private userService: UserService, private route: ActivatedRoute) {
+  constructor(private userService: UserService,
+              private route: ActivatedRoute,
+              private router: Router
+
+  ) {
     this.user = new User();
     this.__user = new User();
     this.usercopy = new User();
@@ -46,8 +50,7 @@ export class UserDetailComponent implements OnInit {
     else {
       this.userService.createUser(this.user);
     }
-    // Let's unbind this.user from previously created/modified user
-    this.user = new User();
+    this.router.navigate(['users']);
   }
   resetForm(form: FormGroup) {
 
@@ -58,4 +61,5 @@ export class UserDetailComponent implements OnInit {
     }
 
   }
+
 }

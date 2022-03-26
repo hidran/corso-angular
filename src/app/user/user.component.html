@@ -8,12 +8,17 @@
 <td>
   <div class="row">
     <div class="col-sm">
-  <a class="btn btn-sm btn-primary" [routerLink] ="['/users',user?.id ,'edit']">
+      <a class="btn btn-sm btn-primary w-50" [routerLink] ="['/users',user?.id ]">
+        <fa-icon [icon]="faInfo"></fa-icon>
+      </a>
+    </div>
+    <div class="col-sm">
+  <a class="btn btn-sm btn-primary w-50" [routerLink] ="['/users',user?.id ,'edit']">
     <fa-icon [icon]="faPen"></fa-icon>
     </a>
     </div>
     <div class="col-sm">
-  <button class="btn btn-sm btn-danger" (click)="deleteUser()"> <fa-icon [icon]="faTrash"></fa-icon></button>
+  <button class="btn btn-sm btn-danger w-50" (click)="deleteUser()"> <fa-icon [icon]="faTrash"></fa-icon></button>
   </div>
   </div>
 </td>

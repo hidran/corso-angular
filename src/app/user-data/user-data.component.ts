@@ -10,7 +10,7 @@ import { UserService } from '../services/user.service';
 })
 export class UserDataComponent implements OnInit {
 
-  user: UserInterface | undefined;
+  public user: UserInterface | undefined;
 
   constructor(private userService: UserService, private route: ActivatedRoute) {
 

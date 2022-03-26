@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'users/new',
-    component: UserDataComponent
+    component: UserDetailComponent
   },
   {
     path: 'users/:id/edit',
