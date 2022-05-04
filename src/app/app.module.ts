@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { UserDataComponent } from './user-data/user-data.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
