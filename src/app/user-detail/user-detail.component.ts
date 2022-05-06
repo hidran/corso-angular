@@ -2,7 +2,7 @@ import { UserService } from './../services/user.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../classes/User';
 import { FormGroup } from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -23,8 +23,8 @@ export class UserDetailComponent implements OnInit {
   }
 
   constructor(private userService: UserService,
-              private route: ActivatedRoute,
-              private router: Router
+    private route: ActivatedRoute,
+    private router: Router
 
   ) {
     this.user = new User();
@@ -35,10 +35,9 @@ export class UserDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(param => {
       const id = Number(param.id); // '12'
-      const user = this.userService.getUser(id);
-      if (user) {
-        this.user = user;
-      }
+      this.userService.getUser(id)
+        .subscribe(user => this.user = user)
+
 
     });
   }
