@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
-  @Input('user-data') user: User | undefined;
+  @Input('user-data') user: User = new User();
   @Output('onDeleteUser') userDeleted = new EventEmitter();
   @Output('onSelectUser') onSelectUser = new EventEmitter();
 
@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
   faTrash = faTrash;
   faInfo = faInfo;
 
-  constructor(private userService: UserService, private route: Router) {
+  constructor(private userService: UserService, private router: Router) {
 
   }
 
@@ -32,8 +32,8 @@ export class UserComponent implements OnInit {
 
 
   }
-  showUserDetail(){
-    this.route.navigateByUrl('/users/' + this.user?.id );
+  showUserDetail() {
+    this.router.navigateByUrl('/users/' + this.user?.id);
   }
   updateUser() {
     // this.route.navigateByUrl('/users/' + this.user?.id + '/edit');
