@@ -4,6 +4,16 @@ import { User } from '../classes/User';
 import { UserInterface } from '../interfaces/user';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
+
+export interface UsersResponse {
+  data: User[];
+  message: string;
+}
+export interface UserResponse {
+  data: User;
+  message: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,26 +22,26 @@ export class UserService {
   constructor(private http: HttpClient) {
 
   }
-  getUsers(): Observable<User[]> {
+  getUsers(): Observable<UsersResponse> {
 
-    return this.http.get<User[]>(this.apiurl);
+    return this.http.get<UsersResponse>(this.apiurl);
   }
-  getUser(id: number): Observable<User> {
+  getUser(id: number): Observable<UserResponse> {
 
-    return this.http.get<User>(this.apiurl + '/' + id);
-  }
-
-  deleteUser(user: User) {
-    return this.http.delete<User>(this.apiurl + '/' + user.id);
+    return this.http.get<UserResponse>(this.apiurl + '/' + id);
   }
 
-  updateUser(user: UserInterface): Observable<User> {
-    return this.http.put<User>(this.apiurl + '/' + user.id, user);
+  deleteUser(user: User): Observable<UserResponse> {
+    return this.http.delete<UserResponse>(this.apiurl + '/' + user.id);
   }
 
-  createUser(user: UserInterface): Observable<User> {
+  updateUser(user: UserInterface): Observable<UserResponse> {
+    return this.http.put<UserResponse>(this.apiurl + '/' + user.id, user);
+  }
 
-    return this.http.post<User>(this.apiurl, user);
+  createUser(user: UserInterface): Observable<UserResponse> {
+
+    return this.http.post<UserResponse>(this.apiurl, user);
 
   }
 }
