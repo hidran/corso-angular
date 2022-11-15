@@ -1,19 +1,19 @@
-<td>{{user?.name}}</td>
-<td>{{user?.lastname}}</td>
-<td>{{user?.fiscalcode}}</td>
-<td>{{user?.email}}</td>
-<td>{{user?.phone}}</td>
-<td>{{user?.province}}</td>
-<td>{{user?.age}}</td>
+<td>{{user.name}}</td>
+<td>{{user.lastname}}</td>
+<td>{{user.fiscalcode}}</td>
+<td>{{user.email}}</td>
+<td>{{user.phone}}</td>
+<td>{{user.province}}</td>
+<td>{{user.age}}</td>
 <td>
   <div class="row">
     <div class="col-sm">
-      <a class="btn btn-sm btn-primary w-50" [routerLink] ="['/users',user?.id ]">
+      <a class="btn btn-sm btn-primary w-50" [routerLink] ="['/users',user.id ]">
         <fa-icon [icon]="faInfo"></fa-icon>
       </a>
     </div>
     <div class="col-sm">
-  <a class="btn btn-sm btn-primary w-50" [routerLink] ="['/users',user?.id ,'edit']">
+  <a class="btn btn-sm btn-primary w-50" [routerLink] ="['/users',user.id ,'edit']">
     <fa-icon [icon]="faPen"></fa-icon>
     </a>
     </div>
