@@ -1,39 +1,51 @@
 <form #f="ngForm">
   <input type="hidden" name="id" [(ngModel)]="user.id">
-  <div class="form-group">
-    <label for="firstname">First name</label>
-    <input class="form-control" [(ngModel)]="user.name" name="firstname" id="firstname">
+  <div class="row mt-4">
+    <div class="form-group col-sm-6">
+      <label for="firstname">First name</label>
+      <input class="form-control" [(ngModel)]="user.name" name="firstname" id="firstname">
+    </div>
+    <div class="form-group  col-sm-6">
+      <label for="lastname">Last name</label>
+      <input class="form-control" [(ngModel)]="user.lastname" name="lastname" id="lastname">
+    </div>
   </div>
-  <div class="form-group">
-    <label for="lastname">Last name</label>
-    <input class="form-control" [(ngModel)]="user.lastname" name="lastname" id="lastname">
+  <div class="row mt-4">
+    <div class="form-group   col-sm-6">
+      <label for="fiscalcode">Fiscal code</label>
+      <input class="form-control" [(ngModel)]="user.fiscalcode" name="fiscalcode" id="fiscalcode">
+    </div>
+    <div class="form-group   col-sm-6">
+      <label for="phone">Phone</label>
+      <input class="form-control" [(ngModel)]="user.phone" name="phone" id="phone">
+    </div>
   </div>
-  <div class="form-group">
-    <label for="fiscalcode">Fiscal code</label>
-    <input class="form-control" [(ngModel)]="user.fiscalcode" name="fiscalcode" id="fiscalcode">
+  <div class="row mt-4">
+    <div class="form-group col-sm-6">
+      <label for="email">Email</label>
+      <input class="form-control" [(ngModel)]="user.email" type="email" name="email" id="email">
+    </div>
+    <div class="form-group  col-sm-6">
+      <label for="age">Age</label>
+      <input class="form-control" [(ngModel)]="user.age" type="number" name="age" id="age">
+    </div>
   </div>
-  <div class="form-group">
-    <label for="phone">Phone</label>
-    <input class="form-control" [(ngModel)]="user.phone" name="phone" id="phone">
-  </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input class="form-control" [(ngModel)]="user.email" type="email" name="email" id="email">
-  </div>
-  <div class="form-group">
-    <label for="age">Age</label>
-    <input class="form-control" [(ngModel)]="user.age" type="number" name="age" id="age">
-  </div>
+  <div class="row flex justify-content-center mt-4">
+    <div class="form-group col-sm-6">
+      <label for="province">Province</label>
+      <input class="form-control" [(ngModel)]="user.province" type="text" name="province" id="province">
+    </div>
 
+  </div>
   <div class="form-group form-footer row mt-3">
     <div class="col-md-4">
-      <a class="btn btn-lg btn-primary w-50" [routerLink] ="['/users']">BACK TO USERS</a>
+      <a class="btn btn-lg btn-primary w-100" [routerLink]="['/users']">BACK TO USERS</a>
     </div>
     <div class="col-md-4">
-    <a class="btn btn-lg btn-outline-secondary  w-50" (click)="resetForm(f.form)">RESET</a>
+      <a class="btn btn-lg btn-outline-secondary  w-100" (click)="resetForm(f.form)">RESET</a>
     </div>
     <div class="col-md-4">
-    <a  class="btn btn-lg btn-success w-50 " (click)="saveUser()"> SAVE</a>
+      <a class="btn btn-lg btn-success w-100 " (click)="saveUser()"> SAVE</a>
     </div>
   </div>
 </form>
