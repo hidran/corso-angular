@@ -3,7 +3,15 @@
   <div class="row mt-4">
     <div class="form-group col-sm-6">
       <label for="firstname">First name</label>
-      <input class="form-control" [(ngModel)]="user.name" name="firstname" id="firstname">
+      <input  #firstname = "ngModel" required minlength="3" class="form-control" [(ngModel)]="user.name" name="firstname" id="firstname">
+    <div *ngIf="firstname.dirty && firstname.touched && firstname.errors">{{firstname.errors | json}}
+      <div class="alert alert-danger" *ngIf="firstname.errors.required">
+      This field first name is required
+    </div>
+      <div class="alert alert-danger" *ngIf="firstname.errors.minlength">
+        This min length of field first name is {{firstname.errors.minlength.requiredLength}} chars
+      </div>
+    </div>
     </div>
     <div class="form-group  col-sm-6">
       <label for="lastname">Last name</label>
@@ -44,8 +52,8 @@
     <div class="col-md-4">
       <a class="btn btn-lg btn-outline-secondary  w-100" (click)="resetForm(f.form)">RESET</a>
     </div>
-    <div class="col-md-4">
-      <a class="btn btn-lg btn-success w-100 " (click)="saveUser()"> SAVE</a>
+    <div class="col-md-4">{{f.invalid | json}}
+      <button [disabled] = "f.invalid" class="btn btn-lg btn-success w-100 " (click)="saveUser()"> SAVE</button>
     </div>
   </div>
 </form>
