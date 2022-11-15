@@ -31,7 +31,8 @@ export class UserService {
     return this.http.get<UserResponse>(this.apiurl + '/' + id);
   }
 
-  deleteUser(user: User): Observable<UserResponse> {
+
+  deleteUser(user: User): Observable<UserResponse>  {
     return this.http.delete<UserResponse>(this.apiurl + '/' + user.id);
   }
 
