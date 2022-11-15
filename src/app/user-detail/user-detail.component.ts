@@ -1,7 +1,7 @@
 import { UserService } from './../services/user.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../classes/User';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -60,7 +60,7 @@ export class UserDetailComponent implements OnInit {
     });
 
   }
-  resetForm(form: FormGroup) {
+  resetForm(form: UntypedFormGroup) {
 
     if (this.user.id === 0) {
       this.user = new User();
