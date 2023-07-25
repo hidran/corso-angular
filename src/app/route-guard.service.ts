@@ -1,15 +1,9 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class RouteGuardService {
+import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot } from '@angular/router';
 
-  constructor(private router: Router) { }
+export const activateUsersFn: CanActivateFn = function (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-   this.router.navigate(['users']);
-    return false;
-  }
-}
+  return false;
+};
+
+
