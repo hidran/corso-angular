@@ -8,7 +8,8 @@ import { UsersComponent } from './users/users.component';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserService } from './services/user.service';
-import { activateUsersFn } from './route-guard.service';
+import { activateUsersFn } from './services/route-guard.service';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'users/:id',
     component: UserDataComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 
