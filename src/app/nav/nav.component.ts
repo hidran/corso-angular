@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
   @Output() onNewUser = new EventEmitter<null>();
-  public isLoggedIn$: Observable<boolean>;
+  public isLoggedIn$: Observable<User | null>;
   public loggeout = true;
   constructor(private authService: AuthService, private router: Router) {
     this.isLoggedIn$ = authService.isLoggedIn$;

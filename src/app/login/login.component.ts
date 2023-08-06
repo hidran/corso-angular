@@ -25,11 +25,17 @@ export class LoginComponent implements OnInit {
     });
 
   }
-  login() {
+  async login() {
 
     console.log(this.loginForm)
     const { email, password } = this.loginForm.value;
-    this.auth.signIn(email, password);
-    this.router.navigate(['/']);
+    this.auth.signIn(email, password).subscribe(resp => {
+      if (resp) {
+        console.log(resp, 'login')
+        // this.router.navigate(['/']);
+      }
+
+    });
+
   }
 }
