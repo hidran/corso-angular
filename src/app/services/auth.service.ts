@@ -1,6 +1,6 @@
 import { User } from './../classes/User';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, switchMap, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
@@ -25,11 +25,11 @@ export class AuthService {
     this.isLoggedInSubject = new BehaviorSubject(this.getUser());
     this.isLoggedIn$ = this.isLoggedInSubject.asObservable();
   }
-  signIn(email: string, password: string): Observable<Jwt> {
+  signIn(email: string, password: string): Observable<User> {
 
     return this.http.post<Jwt>(this.AUTH_API + 'login', { email, password })
       .pipe(
-        tap((response: Jwt) => {
+        switchMap((response: Jwt) => {
           localStorage.setItem('jwt', response.access_token);
           console.log(response);
           const user = new User();
@@ -37,15 +37,29 @@ export class AuthService {
           user.email = response.email;
           this.isLoggedInSubject.next(user);
           localStorage.setItem('user', JSON.stringify(user));
-
+          return of(user);
 
         })
-      )
+      );
 
   }
-  signUp(username: string, email: string, password: string): void {
-    localStorage.setItem('jwt', this.token);
-    this.isLoggedInSubject.next(null);
+  signUp(username: string, email: string, password: string): Observable<User> {
+    const user = new User();
+    user.name = username;
+    user.email = email;
+    return this.http.post<Jwt>(this.AUTH_API + 'signup', { email, password, name: username })
+      .pipe(
+        switchMap((response: Jwt) => {
+          localStorage.setItem('jwt', response.access_token);
+          console.log(response);
+
+          this.isLoggedInSubject.next(user);
+          localStorage.setItem('user', JSON.stringify(user));
+          return of(user);
+
+        })
+      );
+
   }
   isUserLogin(): boolean {
     return !!this.getUser();
