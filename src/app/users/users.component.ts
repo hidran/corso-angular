@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../classes/User';
-import { UserService } from '../services/user.service';
+import {UserService, UsersResponse} from '../services/user.service';
 import { UserComponent } from '../user/user.component';
 
 
@@ -22,7 +22,7 @@ import { UserComponent } from '../user/user.component';
 export class UsersComponent implements OnInit, AfterViewInit {
   title = 'Users';
   event$ = new BehaviorSubject(true);
-  public users$: Observable<User[]> = this.service.getUsers();
+  public users$: Observable<UsersResponse> = this.service.getUsers();
 
 
   @Output('updateUser') updateUser = new EventEmitter<User>();

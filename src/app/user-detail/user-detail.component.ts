@@ -1,4 +1,4 @@
-import { UserService } from './../services/user.service';
+import {UserResponse, UserService} from './../services/user.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../classes/User';
 import { UntypedFormGroup } from '@angular/forms';
@@ -40,7 +40,7 @@ export class UserDetailComponent implements OnInit {
 
 
         this.userService.getUser(id)
-          .subscribe(user => this.user = user);
+          .subscribe((userResponse:UserResponse) => this.user = userResponse.data);
 
       }
     });
