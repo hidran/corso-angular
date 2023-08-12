@@ -47,7 +47,8 @@ export class AuthService {
     const user = new User();
     user.name = username;
     user.email = email;
-    return this.http.post<Jwt>(this.AUTH_API + 'signup', { email, password, name: username })
+    return this.http.post<Jwt>(this.AUTH_API + 'signup', { email, password, name: username }
+    )
       .pipe(
         switchMap((response: Jwt) => {
           localStorage.setItem('jwt', response.access_token);
@@ -75,5 +76,9 @@ export class AuthService {
       return null;
     }
     return JSON.parse(userString);
+  }
+
+  public getToken() {
+    return localStorage.getItem('jwt')
   }
 }

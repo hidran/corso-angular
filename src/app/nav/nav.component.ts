@@ -15,7 +15,7 @@ export class NavComponent implements OnInit {
   public loggeout = true;
   constructor(private authService: AuthService, private router: Router) {
     this.isLoggedIn$ = authService.isLoggedIn$;
-
+    this.isLoggedIn$.subscribe(res => console.log(res))
   }
 
   ngOnInit(): void {

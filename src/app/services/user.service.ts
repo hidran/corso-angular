@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../classes/User';
 import { UserInterface } from '../interfaces/user';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 export interface UsersResponse {
   data: User[];
@@ -19,12 +20,21 @@ export interface UserResponse {
 })
 export class UserService {
   apiurl = environment.APIURL;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth: AuthService) {
 
+  }
+  protected getAuthHeader(): HttpHeaders {
+    return new HttpHeaders({
+      Authorization: "Bearer " + this.auth.getToken()
+    });
   }
   getUsers(): Observable<UsersResponse> {
 
-    return this.http.get<UsersResponse>(this.apiurl);
+    return this.http.get<UsersResponse>(this.apiurl, {
+      headers: this.getAuthHeader()
+
+
+    });
   }
   getUser(id: number): Observable<UserResponse> {
 
@@ -32,7 +42,7 @@ export class UserService {
   }
 
 
-  deleteUser(user: User): Observable<UserResponse>  {
+  deleteUser(user: User): Observable<UserResponse> {
     return this.http.delete<UserResponse>(this.apiurl + '/' + user.id);
   }
 
