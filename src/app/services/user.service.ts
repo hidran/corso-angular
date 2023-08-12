@@ -30,11 +30,7 @@ export class UserService {
   }
   getUsers(): Observable<UsersResponse> {
 
-    return this.http.get<UsersResponse>(this.apiurl, {
-      headers: this.getAuthHeader()
-
-
-    });
+    return this.http.get<UsersResponse>(this.apiurl);
   }
   getUser(id: number): Observable<UserResponse> {
 
