@@ -18,6 +18,7 @@ const routes: Routes = [
     pathMatch: 'full',
     component: UsersComponent,
 
+    canActivate: [activateUsersFn]
 
   },
   {
